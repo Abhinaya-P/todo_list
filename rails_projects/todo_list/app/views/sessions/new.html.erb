@@ -1,0 +1,12 @@
+<% provide(:title,'Sign In') %>
+<div class="container">
+		<%= form_for(:session, url: sessions_path ) do | s |%>
+		   <%= s.label :email %>
+		   <%= s.text_field :email %>
+
+		   <%= s.label :password %>
+		   <%= s.password_field :password %>
+
+		   <%= s.submit "Sign In", class: "btn btn-large btn-primary" %> 
+		<% end %>
+</div>

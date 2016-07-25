@@ -1,0 +1,11 @@
+<div class="contianer">
+<h1> <%= @user.name %> </h1>
+<h2>Tasklists(<%= current_user.tasklists.count %>)</h2>
+<%if signed_in? %>
+<ul> 
+	<% current_user.tasklists.each do | list | %>
+	<li> <strong><%= link_to list.name, tasklist_path(list) %> </strong>         <%= link_to "Delete" , tasklist_path(list) , method: "delete" %>
+<% end %>
+</ul> </li> 
+<% end %>
+</div>

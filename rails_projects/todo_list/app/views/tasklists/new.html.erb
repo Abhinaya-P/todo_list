@@ -1,0 +1,9 @@
+<% provide(:title,"New Todo List") %>
+
+<div class="container">
+	<%= form_for(:tasklist , url: tasklists_path) do | f | %>
+	 <%= f.label :name %>
+	 <%= f.text_field :name %>
+	 <%= f.submit "Create List", class: "btn btn-large" %>
+	 <%end%>
+</div>
