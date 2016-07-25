@@ -4,7 +4,7 @@
 <%if signed_in? %>
 <ul> 
 	<% current_user.tasklists.each do | list | %>
-	<li> <strong><%= link_to list.name, tasklist_path(list) %> </strong>         <%= link_to "Delete" , tasklist_path(list) , method: "delete" %>
+	<li> <strong><%= link_to list.name, tasklist_path(list) %> </strong>         <%= link_to "Delete" , tasklist_path(list) , method: "delete" , confirm: "Are you sure?"%>
 <% end %>
 </ul> </li> 
 <% end %>

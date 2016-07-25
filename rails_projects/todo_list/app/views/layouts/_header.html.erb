@@ -1,14 +1,14 @@
 
 <header>
-	<div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
+	<div class="navbar navbar-inverse navbar-fixed-top">
 	<nav>
 	<ul class="nav nav-tabs">
 		<li><%= link_to "Home",home_path %></li>
-		<li><%= link_to "About Us", about_path %></li>
 		<% if signed_in? %>
 		<li> <%= link_to "Sign Out", signout_path , method: "delete" %> </li>
 		<li> <%= link_to "Create a Todo List", new_tasklist_path %> </li>
+		<li> <%= link_to "View my profile", user_path(current_user) %> </li>
 		<% else %>
 		<li> <%= link_to "Sign In", new_session_path %> </li>
 		<% end %>

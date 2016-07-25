@@ -1,4 +1,6 @@
 class TasklistsController < ApplicationController
+
+  before_filter :signed_in_user , only: [:create,:show,:destroy]
   def new
   end
 
@@ -22,4 +24,9 @@ class TasklistsController < ApplicationController
      flash[:success] = "List has been deleted successfully"
      redirect_to(user_path(current_user))
   end
+
+  private
+    def signed_in_user
+      redirect_to new_session_path unless signed_in?
+    end
 end

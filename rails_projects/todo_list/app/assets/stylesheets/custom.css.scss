@@ -1,9 +1,10 @@
 
 @import "bootstrap";
 
-html {
-	min-height: 100%;
-	position: relative;
+
+body {
+	
+	padding-top: 60px;
 }
 ul {
 	float: justified;
@@ -13,5 +14,6 @@ ul {
 
 
 footer {
-	float: bottom;
+	float: left;
+	position: absolute;
 }

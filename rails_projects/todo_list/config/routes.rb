@@ -4,7 +4,10 @@ TodoList::Application.routes.draw do
   get "tasklists/new"
 
   resources :users
-  resources :tasklists
+  resources :tasklists 
+  resources :todos 
+    
+
   resources :sessions, only: [ :new, :create, :destroy ]
   
   match '/home', to: 'staticpages#home'
