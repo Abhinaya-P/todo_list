@@ -1,11 +1,28 @@
 <div class="contianer">
 <h1> <%= @user.name %> </h1>
-<h2>Tasklists(<%= current_user.tasklists.count %>)</h2>
 <%if signed_in? %>
-<ul> 
+<h2>Tasklists(<%= current_user.tasklists.count %>)</h2>
+<% if current_user.tasklists.count == 0 %>
+   <h3> There are no task lists under you. </h3>
+<%else%>
+<table class="table"> 
+	<tr>
+		<th> TaskList </th> 
+		<th> Total Tasks </th>
+		<th> In Progress </th>
+	    <th> Completed </th>
+	 </tr>
 	<% current_user.tasklists.each do | list | %>
-	<li> <strong><%= link_to list.name, tasklist_path(list) %> </strong>         <%= link_to "Delete" , tasklist_path(list) , method: "delete" , confirm: "Are you sure?"%>
+	<tr>
+	<td> <strong><%= link_to list.name, tasklist_path(list) %> </strong>  
+	<td> <%= list.todos.count %> </td>
+	<td> <%= list.todos.find_all_by_status("In Progress").count %> </td>
+	<td> <%= list.todos.find_all_by_status("Completed").count %></td>
+	<td><%= link_to "Delete" , tasklist_path(list) , method: "delete" , confirm: "Are you sure?"%></td>
+   </tr>
+    
+   <% end %>
+</table>
 <% end %>
-</ul> </li> 
-<% end %>
+<%end %>
 </div>

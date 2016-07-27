@@ -3,10 +3,10 @@
 <div class="container">
 <h2><%= @list.name %>(<%= @list.todos.count %>)</h2>
 <% if @list.todos.any? %>
-<table border="1">
+<table border="1" class="table">
 <tr>
-	<th><h3>Description</h3></th>
-	<th><h3>Status</h3></th>
+	<th>Description</th>
+	<th>Status</th>
 </tr>
 	<% @list.todos.each do | item | %>
 	<tr>
@@ -22,13 +22,22 @@
 <div class="row">
 	<div class="span8 offset3" >
         <%= form_for(:todo,url: todos_path) do | f| %>
+
         <%= hidden_field_tag "tasklist_id",@list.id %>
         <%= f.label :description %>
         <%= f.text_field :description %>
 
-        <%= f.label :status %>
-        <%= f.text_field :status %>
+        <%= f.label  :status %>
+  	    <%= f.select :status,[['In Progress','In Progress'],['Completed','Completed']] %>
 
+  	    <%= f.label :due_date %>
+  	    <%= date_select :due_date, :due_date, :class => 'datepicker' %>
+
+  	    <%= f.label  :priority %>
+  	    <%= f.select :priority,[['High',1],['Medium',2],['Low',3]] %>
+
+  	    
+  	    <%= f.check_box :alert %><%= f.label :alert %>
         <%= f.submit "Add Todo" , class: "btn btn-large" %>
         <% end %>
      </div>

@@ -4,7 +4,9 @@
 <h1>TodoList App</h1>
 <p>Welcome to The Todo List App
 </p>
+<% if !signed_in? %>
 <p> To begin using our App, "Sign Up now!"</p>
 <%=link_to "Sign Up now!", new_user_path, class: "btn btn-primary" %>
 </div>
+<% end %>
 

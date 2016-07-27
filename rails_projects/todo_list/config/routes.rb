@@ -3,7 +3,11 @@ TodoList::Application.routes.draw do
 
   get "tasklists/new"
 
-  resources :users
+  resources :users do
+  member do 
+    get :notifications
+  end
+  end
   resources :tasklists 
   resources :todos 
     

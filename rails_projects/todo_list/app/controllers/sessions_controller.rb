@@ -10,12 +10,14 @@ class SessionsController < ApplicationController
   		flash[:success] = "You have successfully logged in"
   		redirect_to @user
   	else
+      flash[:error] = "Invalid Username/password"
   		render 'new'
   	end
   end
 
   def destroy
   	sign_out 
+    flash[:success] = "You have successfully logged out!"
   	redirect_to home_path
   end
 end

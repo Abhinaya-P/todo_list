@@ -1,12 +1,24 @@
 <% provide(:title,"Edit Todo") %>
-<div class="container">
+<div class="row">
+	<div class="span8 offset3" >
   <%= form_for(@todo) do | f | %>
+     <%= render 'shared/error_messages', object: f.object %>
   	 <%= f.label :description %>
   	 <%= f.text_field :description %>
 
   	 <%= f.label  :status %>
-  	 <%= f.text_field :status %>
+  	 <%= f.select :status,[['In Progress','In Progress'],['Completed','Completed']] %>
 
-  	 <%= f.submit "Edit Todo", class: "btn btn-large" %> 
+  	 <%= f.label :due_date %>
+  	 <%= date_select :due_date, :due_date, :class => 'datepicker' %>
+
+  	 <%= f.label  :priority %>
+  	 <%= f.select :priority,[['High',1],['Medium',2],['Low',3]] %>
+
+  	    
+  	 <%= f.check_box :alert %><%= f.label :alert %>
+
+  	 <%= f.submit "Update", class: "btn btn-large" %> 
   <%end%>
+</div>
 </div>

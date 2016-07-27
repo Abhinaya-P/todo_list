@@ -1,0 +1,15 @@
+<% if @notifications.any? %>
+<div class="container">
+
+<ul class="content">
+	<% @notifications.each do | notify | %>
+	<li><u> <%= notify %></u></li>
+	<% end %>
+</ul>
+<%= will_paginate @notifications %>
+<% else %>
+You have no new notifications.
+<% end %>
+
+
+</div>

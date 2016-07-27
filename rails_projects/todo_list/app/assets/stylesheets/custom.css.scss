@@ -1,19 +1,28 @@
 
 @import "bootstrap";
 
-
+html {
+	height: 100%;
+	margin: 0;
+}
+html {
+	overflow-y: scroll;
+}
 body {
-	
+	margin: 0;
+	height: 100%;
 	padding-top: 60px;
+	display: block;
 }
 ul {
 	float: justified;
 	list-style-type: none;
 }
 
+input {
+	display: block;
+}
 
-
-footer {
-	float: left;
-	position: absolute;
+select {
+	display: block;
 }

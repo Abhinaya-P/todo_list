@@ -2,11 +2,13 @@ class TodosController < ApplicationController
 	before_filter :signed_in_user ,only: [:create,:destroy,:edit,:update]
 	def create
 		@todo = current_user.tasklists.find_by_id(params[:tasklist_id]).todos.build(params[:todo])
+		#debugger
+		@todo.due_date = (Date.new(params[:due_date]['due_date(1i)'].to_i,params[:due_date]['due_date(2i)'].to_i,params[:due_date]['due_date(3i)'].to_i)).to_s
 		list = current_user.tasklists.find_by_id(params[:tasklist_id])
 		if @todo.save
 			flash[:success] = 'Item added successfully'
 		else
-			flash[:success] = 'Item could not be added'
+			flash[:failure] = 'Item could not be added'
 		end
 		redirect_to tasklist_path(list)
 	end
@@ -36,7 +38,8 @@ class TodosController < ApplicationController
     def update
  		@todo = Todo.find(params[:id])
     	if @todo.update_attributes(params[:todo])
-
+    		@todo.due_date = (Date.new(params[:due_date]['due_date(1i)'].to_i,params[:due_date]['due_date(2i)'].to_i,params[:due_date]['due_date(3i)'].to_i)).to_s
+    		@todo.save
     	current_user.tasklists.each do | list |
 			if list.todos.exists?(params[:id])
 				@task_list = list
