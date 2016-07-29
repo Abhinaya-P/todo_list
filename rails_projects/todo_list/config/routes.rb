@@ -3,6 +3,8 @@ TodoList::Application.routes.draw do
 
   get "tasklists/new"
 
+  #root to: "staticpages#home"
+
   resources :users do
   member do 
     get :notifications
