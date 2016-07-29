@@ -22,7 +22,7 @@ TodoList::Application.routes.draw do
 
   match '/signout', to: "sessions#destroy"
 
-  
+  match '/result', to: "staticpages#result", via: :get
 
 
   # The priority is based upon order of creation:

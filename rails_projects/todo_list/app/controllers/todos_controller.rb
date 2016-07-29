@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-	before_filter :signed_in_user ,only: [:create,:destroy,:edit,:update]
+	before_filter :signed_in_user ,only: [:create,:destroy,:edit,:update,:result]
 	def create
 		@todo = current_user.tasklists.find_by_id(params[:tasklist_id]).todos.build(params[:todo])
 		#debugger
@@ -51,6 +51,7 @@ class TodosController < ApplicationController
     	render 'edit'
     end	
     end
+
 
     private
     def signed_in_user

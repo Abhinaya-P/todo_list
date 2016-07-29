@@ -1,0 +1,23 @@
+<% provide(:title, "Search Result") %>
+
+
+<% if @result.any? %>
+<h4> Results Found </h4>
+<table class="table">
+	<tr>
+	<th> TaskList </th>
+	<th> Task </th>
+	<th> Status </th>
+	</tr>
+<% @result.each do | item | %>
+	<tr>
+		<td><%= current_user.tasklists.find(item.tasklist_id).name %></td>
+		<td><%= item.description %></td>
+		<td><%= item.status %> </td>	
+	</tr>
+<% end %>
+<%= will_paginate @result %>
+</table>
+<% else %>
+	No Todos found.
+<% end %>

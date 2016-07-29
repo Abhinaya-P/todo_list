@@ -1,6 +1,5 @@
 
-<header>
-	
+<header>	
 	<div class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 	<nav>
@@ -11,6 +10,10 @@
 		<li> <%= link_to "Create a Task List", new_tasklist_path %> </li>
 		<li> <%= link_to "View my profile", user_path(current_user) %> </li>
 		<li> <%= link_to "Notifications", notifications_user_path(current_user) %> </li>
+		<li> <%= form_tag result_path , method: "get" do  %>
+			 <%= text_field_tag :search, params[:search] ,placeholder: "Search Todo" ,"ng-keypress" => "keypressevt()" %>
+			 <% end %>
+		</li>
 		<% else %>
 		<li> <%= link_to "Sign In", new_session_path %> </li>
 		<% end %>
